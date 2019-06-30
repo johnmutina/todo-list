@@ -1,0 +1,9 @@
+.Todo {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.Todo button {
+  height: 50px;
+}
