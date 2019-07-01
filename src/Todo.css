@@ -1,9 +1,18 @@
 .Todo {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .Todo button {
-  height: 25px;
+    height: 25px;
+}
+
+.Todo li {
+    list-style: none;
+}
+
+.Todo-completed {
+    color: grey;
+    text-decoration: line-through;
 }

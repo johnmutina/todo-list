@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Todo.css";
-import { throwStatement } from "@babel/types";
 
 class Todo extends Component {
     constructor(props) {
@@ -13,6 +12,7 @@ class Todo extends Component {
         this.handleEdit = this.handleEdit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.toggleCompletion = this.toggleCompletion.bind(this);
     }
 
     handleEdit() {
@@ -39,11 +39,17 @@ class Todo extends Component {
         });
     }
 
+    toggleCompletion() {
+        this.setState({
+            completed: !this.state.completed
+        });
+    }
+
     render() {
         let result;
         if (this.state.isEditing) {
             result = (
-                <div className="Todo List">
+                <div className="Todo">
                     <form onSubmit={this.handleUpdate}>
                         <input
                             name="text"
@@ -57,8 +63,13 @@ class Todo extends Component {
             );
         } else {
             result = (
-                <div className="Todo List">
-                    <h5>{this.props.text}</h5>
+                <div className="Todo">
+                    <li
+                        onClick={this.toggleCompletion}
+                        className={this.state.completed && "Todo-completed"}
+                    >
+                        {this.props.text}
+                    </li>
                     <div>
                         <button onClick={this.handleEdit}>Edit</button>
                         <button onClick={this.handleClick}>X</button>
